@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/andrewarrow/feedback/router"
+	webview "github.com/webview/webview_go"
 )
 
 //go:embed app/feedback.json
@@ -48,8 +49,17 @@ func main() {
 		r.Paths["markup"] = app.Markup
 		r.BucketPath = "/Users/aa/bucket"
 		r.NotLoggedInPath = "epoch/login"
-		r.ListenAndServe(":" + os.Args[2])
+		go r.ListenAndServe(":" + os.Args[2])
+		webviewShow()
 	} else if arg == "help" {
 	}
+}
 
+func webviewShow() {
+	w := webview.New(true)
+	defer w.Destroy()
+	w.SetTitle("Basic Example")
+	w.SetSize(480, 320, webview.HintNone)
+	w.SetHtml("Thanks for using webview!")
+	w.Run()
 }

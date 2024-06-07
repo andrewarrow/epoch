@@ -4,7 +4,10 @@ replace github.com/andrewarrow/feedback => /Users/aa/os/feedback
 
 go 1.21.0
 
-require github.com/andrewarrow/feedback v0.0.0-20240604184010-ae64c5cf99fb
+require (
+	github.com/andrewarrow/feedback v0.0.0-20240604184010-ae64c5cf99fb
+	github.com/webview/webview_go v0.0.0-20240220051247-56f456ca3a43
+)
 
 require (
 	cloud.google.com/go v0.112.0 // indirect
