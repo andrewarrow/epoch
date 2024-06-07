@@ -1,7 +1,8 @@
 package browser
 
 import (
-	"time"
+	"fmt"
+	"syscall/js"
 
 	"github.com/andrewarrow/feedback/wasm"
 )
@@ -18,7 +19,18 @@ func RegisterEvents() {
 }
 
 func LoginEvents() {
-	time.Sleep(time.Second * 3)
+	fmt.Println("h1")
+	Document.Document.Call("addEventListener", "keydown", wasm.FuncOf(keyPress))
 
-	go wasm.DoPost("/api/q", nil)
+}
+
+func keyPress(p0 js.Value) {
+	fmt.Println(p0)
+	k := p0.Get("key").String()
+	if k == "Meta" || k == "Shift" || k == "Control" {
+		return
+	}
+	if k == "q" {
+		go wasm.DoPost("/api/q", nil)
+	}
 }
