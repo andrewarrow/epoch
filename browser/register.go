@@ -32,5 +32,7 @@ func keyPress(p0 js.Value) {
 	}
 	if k == "q" {
 		go wasm.DoPost("/api/q", nil)
+	} else if k == "r" {
+		Global.Location.Reload()
 	}
 }
