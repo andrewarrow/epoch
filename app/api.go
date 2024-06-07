@@ -1,12 +1,14 @@
 package app
 
 import (
+	"os"
+
 	"github.com/andrewarrow/feedback/router"
 )
 
 func HandleApi(c *router.Context, second, third string) {
-	if second == "" && third == "" && c.Method == "GET" {
-		handleConnect(c)
+	if second == "q" && third == "" && c.Method == "POST" {
+		os.Exit(0)
 		return
 	}
 	c.NotFound = true

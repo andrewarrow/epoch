@@ -1,6 +1,8 @@
 package browser
 
 import (
+	"time"
+
 	"github.com/andrewarrow/feedback/wasm"
 )
 
@@ -8,7 +10,6 @@ var Global *wasm.Global
 var Document *wasm.Document
 
 func RegisterEvents() {
-	LogoutEvents()
 	if Global.Start == "welcome.html" {
 		LoginEvents()
 	} else if Global.Start == "login.html" {
@@ -17,7 +18,7 @@ func RegisterEvents() {
 }
 
 func LoginEvents() {
-}
+	time.Sleep(time.Second * 3)
 
-func LogoutEvents() {
+	go wasm.DoPost("/api/q", nil)
 }

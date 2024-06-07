@@ -3,11 +3,8 @@ package main
 import (
 	"embed"
 	"epoch/app"
-	"fmt"
 	"math/rand"
 	"os"
-	"os/exec"
-	"strings"
 	"time"
 
 	"github.com/andrewarrow/feedback/router"
@@ -53,17 +50,6 @@ func main() {
 		r.BucketPath = "/Users/aa/bucket"
 		r.NotLoggedInPath = "epoch/login"
 		go r.ListenAndServe(":" + os.Args[2])
-
-		go func() {
-			modifier := "Cmd"
-			key := "q"
-			cmd := exec.Command("/usr/bin/env", "bash", "-c", "while true; do read -r -n1 -s key; [[ \"$key\" == \""+modifier+"\" ]] && read -r -n1 -s key; [[ \"$key\" == \""+key+"\" ]] && echo \"\" && exit 0; done")
-
-			output, _ := cmd.CombinedOutput()
-			key2 := strings.TrimSpace(string(output))
-			fmt.Println(key2)
-		}()
-
 		webviewShow()
 	} else if arg == "help" {
 	}
