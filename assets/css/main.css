@@ -1,0 +1,13 @@
+.noUi-target {
+    background-color: #000000;
+    border: 2px solid #7580ff;
+}
+
+.noUi-handle {
+    background-color: black; 
+}
+
+.noUi-connect {
+    background-color: #7580ff;
+}
+
