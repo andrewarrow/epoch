@@ -25,17 +25,6 @@ var buildTag string
 func main() {
 	rand.Seed(time.Now().UnixNano())
 	if len(os.Args) == 1 {
-		//PrintHelp()
-		return
-	}
-
-	arg := os.Args[1]
-
-	if arg == "import" {
-	} else if arg == "render" {
-		router.RenderMarkup()
-	} else if arg == "run" {
-
 		router.DB_FLAVOR = "sqlite"
 		router.BuildTag = buildTag
 		router.EmbeddedTemplates = embeddedTemplates
@@ -50,8 +39,16 @@ func main() {
 		r.Paths["markup"] = app.Markup
 		r.BucketPath = "/Users/aa/bucket"
 		r.NotLoggedInPath = "epoch/login"
-		go r.ListenAndServe(":" + os.Args[2])
+		go r.ListenAndServe(":3000")
 		webviewShow()
+		return
+	}
+
+	arg := os.Args[1]
+
+	if arg == "import" {
+	} else if arg == "render" {
+		router.RenderMarkup()
 	} else if arg == "help" {
 	}
 }

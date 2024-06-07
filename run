@@ -13,4 +13,4 @@ tailwindcss -i assets/css/tail.components.css -o assets/css/tail.min.css --minif
 DATABASE_URL=postgres://fred3:fred3@localhost/epoch?sslmode=disable
 uuid=$(uuidgen); go build -ldflags="-X main.buildTag=$uuid" -o epoch
 echo 3
-./epoch run 3000
+./epoch

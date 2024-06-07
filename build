@@ -11,4 +11,4 @@ cd ../..
 mv save_main main.go
 tailwindcss -i assets/css/tail.components.css -o assets/css/tail.min.css --minify
 DATABASE_URL=postgres://fred3:fred3@localhost/linkscopic?sslmode=disable
-uuid=$(uuidgen); GOOS=linux GOARCH=amd64 go build -ldflags="-X main.buildTag=$uuid" -o epoch
+uuid=$(uuidgen); go build -ldflags="-X main.buildTag=$uuid" -o epoch
