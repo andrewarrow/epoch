@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/andrewarrow/feedback/router"
+	"github.com/eiannone/keyboard"
 	webview "github.com/webview/webview_go"
 )
 
@@ -50,6 +51,18 @@ func main() {
 		r.BucketPath = "/Users/aa/bucket"
 		r.NotLoggedInPath = "epoch/login"
 		go r.ListenAndServe(":" + os.Args[2])
+		keyboard.Open()
+		defer func() {
+			_ = keyboard.Close()
+		}()
+		go func() {
+			for {
+				char, _, _ := keyboard.GetKey()
+				if char == 'q' {
+					os.Exit(0)
+				}
+			}
+		}()
 		webviewShow()
 	} else if arg == "help" {
 	}
@@ -58,8 +71,8 @@ func main() {
 func webviewShow() {
 	w := webview.New(true)
 	defer w.Destroy()
-	w.SetTitle("Basic Example")
-	w.SetSize(480, 320, webview.HintNone)
-	w.SetHtml("Thanks for using webview!")
+	w.SetTitle("epoch")
+	w.SetSize(969, 666, webview.HintNone)
+	w.Navigate("http://localhost:3000")
 	w.Run()
 }
