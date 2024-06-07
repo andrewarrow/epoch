@@ -36,6 +36,7 @@ func main() {
 		router.RenderMarkup()
 	} else if arg == "run" {
 
+		router.DB_FLAVOR = "sqlite"
 		router.BuildTag = buildTag
 		router.EmbeddedTemplates = embeddedTemplates
 		router.EmbeddedAssets = embeddedAssets

@@ -6,3 +6,4 @@ json.wasm.gz
 .DS_Store
 views
 tail.min.css
+sqlite.db

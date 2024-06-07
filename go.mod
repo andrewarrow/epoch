@@ -50,6 +50,7 @@ require (
 	github.com/jmoiron/sqlx v1.3.5 // indirect
 	github.com/lib/pq v1.10.9 // indirect
 	github.com/lucasb-eyer/go-colorful v1.2.0 // indirect
+	github.com/mattn/go-sqlite3 v1.14.6 // indirect
 	github.com/twpayne/go-geom v1.5.4 // indirect
 	github.com/xeonx/timeago v1.0.0-rc5 // indirect
 	go.opencensus.io v0.24.0 // indirect
