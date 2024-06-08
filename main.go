@@ -34,7 +34,8 @@ func main() {
 		r := router.NewRouter("epoch", embeddedFile)
 		r.Paths["/"] = app.HandleWelcome
 		r.Paths["api"] = app.HandleApi
-		//r.Paths["epoch"] = app.epoch
+		//r.Paths["epoch"] = app.Epoch
+		r.Paths["project"] = app.Project
 		//r.Paths["login"] = app.Login
 		//r.Paths["register"] = app.Register
 		//r.Paths["admin"] = app.Admin
