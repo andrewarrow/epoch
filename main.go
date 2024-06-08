@@ -51,6 +51,10 @@ func main() {
 	arg := os.Args[1]
 
 	if arg == "import" {
+	} else if arg == "seed" {
+		router.DB_FLAVOR = "sqlite"
+		r := router.NewRouter("epoch", embeddedFile)
+		app.Seed(r.ToContext())
 	} else if arg == "render" {
 		router.RenderMarkup()
 	} else if arg == "help" {
