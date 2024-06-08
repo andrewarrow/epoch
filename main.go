@@ -43,8 +43,8 @@ func main() {
 		r.Paths["markup"] = app.Markup
 		r.BucketPath = "/Users/aa/bucket"
 		r.NotLoggedInPath = "epoch/login"
-		r.ListenAndServe(":3000")
-		//webviewShow()
+		go r.ListenAndServe(":3000")
+		webviewShow()
 		return
 	}
 
