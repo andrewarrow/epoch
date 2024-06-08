@@ -5,7 +5,7 @@ time tracker and todo list a clone of johannesjo's [super-productivity](https://
 ![super-productivity](https://i.imgur.com/szpWtFz.png)
 
 # video demo
-[![epoch Video Demo](https://img.youtube.com/vi/g2jfyMvhi34/0.jpg)](https://www.youtube.com/watch?v=g2jfyMvhi34)
+[![epoch Video Demo](https://i.imgur.com/pds2pzz.png)](https://www.youtube.com/watch?v=g2jfyMvhi34)
 
 # screen shots
 
