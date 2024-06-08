@@ -26,7 +26,7 @@ html data-theme=sunset
     div 
       div pb-32 footer items-center p-10 bg-base-200 text-base-content rounded
         div items-center grid-flow-col
-          Copyright &copy; 2024 - All right reserved by apps.greyspace.co
+          Copyright &copy; 2024 - All right reserved by epoch 
         div grid-flow-col gap-4 md:place-self-center md:justify-self-end
           a href=/space/about-us link link-hover
             About Us

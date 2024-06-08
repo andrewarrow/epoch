@@ -1,8 +1,6 @@
 package browser
 
 import (
-	"fmt"
-
 	"github.com/andrewarrow/feedback/wasm"
 )
 
@@ -29,6 +27,7 @@ func CreateEvents() {
 
 func NavEvents() {
 	Global.Event("plus", taskOpen)
+	go FetchProjects()
 }
 
 func taskOpen() {
@@ -59,7 +58,6 @@ func loadTasks() {
 	tasks.Set("innerHTML", "")
 	for _, item := range items {
 		a := Document.RenderToNewDiv("task", item)
-		fmt.Println(a)
 		tasks.Call("appendChild", a)
 	}
 	if len(items) == 0 {
