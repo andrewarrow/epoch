@@ -30,11 +30,6 @@ func CreateEvents() {
 
 func NavEvents() {
 	Global.Event("plus", taskOpen)
-	a := wasm.NewAutoForm("form-task")
-	a.After = func(id int64) {
-		Document.Id("new-task").Set("value", "")
-	}
-	Global.AddAutoForm(a)
 }
 
 func taskOpen() {
@@ -45,6 +40,11 @@ func taskOpen() {
 		Document.Id("tasks").Show()
 		Document.Id("new-task").Focus()
 		isTaskOpen = true
+		a := wasm.NewAutoForm("tasks")
+		a.After = func(id int64) {
+			Document.Id("new-task").Set("value", "")
+		}
+		Global.AddAutoForm(a)
 	}
 }
 
