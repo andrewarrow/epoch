@@ -11,15 +11,19 @@ var Global *wasm.Global
 var Document *wasm.Document
 
 func RegisterEvents() {
-	MenuEvents()
 	if Global.Start == "welcome.html" {
 		LoginEvents()
-	} else if Global.Start == "login.html" {
+	} else if Global.Start == "create.html" {
+		CreateEvents()
 	} else if Global.Start == "register.html" {
 	}
 }
 
-func MenuEvents() {
+func CreateEvents() {
+	a := wasm.NewAutoForm("create")
+	a.Path = "/project"
+	a.After = func(id int64) {
+	}
 }
 func createOpen() {
 }

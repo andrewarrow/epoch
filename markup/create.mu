@@ -1,6 +1,6 @@
 div p-0 
   {{ template "navbar" . }}
-  div mt-9 space-y-9 text-center 
+  form id=create mt-9 space-y-9 text-center 
     div flex w-full justify-center 
       div text-2xl font-bold
         Create Project
@@ -19,4 +19,4 @@ div p-0
           span ml-3 label-text
             Enable Project Backlog
     div flex w-full justify-center space-x-6 
-      input btn btn-primary type=submit value=Save
+      input btn btn-primary type=submit value=Save id=submit
