@@ -23,5 +23,6 @@ func ProjectManage() {
 	after := func() {
 		Global.Location.Href = "/"
 	}
+	w := Document.Id("manage")
 	Global.AutoDel("/project/", w, "trash", after)
 }
