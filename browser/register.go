@@ -24,7 +24,7 @@ func ProjectNew() {
 	a := wasm.NewAutoForm("create")
 	a.Path = "/project"
 	a.After = func(val string) {
-		Global.Toast(val)
+		Global.Toast(val + ".")
 		go FetchProjects()
 	}
 	Global.AddAutoForm(a)

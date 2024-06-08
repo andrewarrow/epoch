@@ -6,6 +6,8 @@ go 1.21.0
 
 require (
 	github.com/andrewarrow/feedback v0.0.0-20240604184010-ae64c5cf99fb
+	github.com/hajimehoshi/oto v1.0.1
+	github.com/tosone/minimp3 v1.0.2
 	github.com/webview/webview_go v0.0.0-20240220051247-56f456ca3a43
 )
 
@@ -60,6 +62,9 @@ require (
 	go.opentelemetry.io/otel/metric v1.24.0 // indirect
 	go.opentelemetry.io/otel/trace v1.24.0 // indirect
 	golang.org/x/crypto v0.18.0 // indirect
+	golang.org/x/exp/shiny v0.0.0-20240604190554-fc45aab8b7f8 // indirect
+	golang.org/x/image v0.14.0 // indirect
+	golang.org/x/mobile v0.0.0-20231127183840-76ac6878050a // indirect
 	golang.org/x/net v0.20.0 // indirect
 	golang.org/x/oauth2 v0.16.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect

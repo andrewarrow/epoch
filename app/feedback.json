@@ -62,6 +62,11 @@
           "flavor": "name"
         },
         {
+          "name": "project_id",
+          "flavor": "int",
+          "index": "yes"
+        },
+        {
           "name": "completed_at",
           "flavor": "timestamp",
           "null": "yes"
