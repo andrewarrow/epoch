@@ -9,6 +9,7 @@ import (
 
 var Global *wasm.Global
 var Document *wasm.Document
+var isTaskOpen bool
 
 func RegisterEvents() {
 	NavEvents()
@@ -26,11 +27,25 @@ func CreateEvents() {
 	a.After = func(id int64) {
 	}
 }
+
 func NavEvents() {
 	Global.Event("plus", taskOpen)
+	a := wasm.NewAutoForm("form-task")
+	a.After = func(id int64) {
+		Document.Id("new-task").Set("value", "")
+	}
+	Global.AddAutoForm(a)
 }
+
 func taskOpen() {
-	Document.Id("tasks").Show()
+	if isTaskOpen {
+		Document.Id("tasks").Hide()
+		isTaskOpen = false
+	} else {
+		Document.Id("tasks").Show()
+		Document.Id("new-task").Focus()
+		isTaskOpen = true
+	}
 }
 
 func LoginEvents() {
