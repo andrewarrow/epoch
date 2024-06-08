@@ -12,13 +12,13 @@ func RegisterEvents() {
 	NavEvents()
 	if Global.Start == "welcome.html" {
 		LoginEvents()
-	} else if Global.Start == "create.html" {
-		CreateEvents()
+	} else if Global.Start == "project_new.html" {
+		ProjectNew()
 	} else if Global.Start == "register.html" {
 	}
 }
 
-func CreateEvents() {
+func ProjectNew() {
 	a := wasm.NewAutoForm("create")
 	a.Path = "/project"
 	a.After = func(id int64) {
@@ -56,6 +56,9 @@ func LoginEvents() {
 func loadTasks() {
 	items := wasm.DoGetItems("/task")
 	tasks := Document.Id("task-list")
+	if tasks == nil {
+		return
+	}
 	tasks.Set("innerHTML", "")
 	for _, item := range items {
 		a := Document.RenderToNewDiv("task", item)
