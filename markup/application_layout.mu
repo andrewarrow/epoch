@@ -19,6 +19,16 @@ html data-theme=sunset
       {{ index . "title" }}
     {{ index . "viewport" }}
   body
+    div space-x-6 hidden2 absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/3 h-24 bg-gray-100 rounded-lg flex justify-center items-center text-black
+      div ml-6 text-green-600 text-4xl
+        +
+      div bg-r mr-9
+        span
+          Created project 
+        span font-bold
+          werfwfw.
+        span
+          You can select it from the menu on the top left.
     div id=flash bg-red-600 text-white text-center fixed top-0 left-0 w-full
       {{ index . "flash" }}
     div overflow-x-auto pl-3 pr-3 min-h-screen font-montserrat text-base

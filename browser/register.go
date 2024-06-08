@@ -22,7 +22,10 @@ func ProjectNew() {
 	a := wasm.NewAutoForm("create")
 	a.Path = "/project"
 	a.After = func(id int64) {
+		Global.Toast("Project Created!")
+		go FetchProjects()
 	}
+	Global.AddAutoForm(a)
 }
 
 func NavEvents() {
