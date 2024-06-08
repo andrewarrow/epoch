@@ -43,6 +43,7 @@ func taskOpen() {
 		a.After = func(id int64) {
 			Document.Id("new-task").Set("value", "")
 			go loadTasks()
+			go FetchProjects()
 		}
 		Global.AddAutoForm(a)
 	}
