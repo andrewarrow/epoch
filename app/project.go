@@ -30,6 +30,8 @@ func handleProjectNew(c *router.Context) {
 }
 func handleProjectManage(c *router.Context) {
 	send := map[string]any{}
+	items := c.All("project", "order by created_at desc", "")
+	send["items"] = items
 	c.SendContentInLayout("project_manage.html", send, 200)
 }
 
