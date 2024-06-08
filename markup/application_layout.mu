@@ -20,9 +20,6 @@ html data-theme=sunset
   body
     div id=flash bg-red-600 text-white text-center fixed top-0 left-0 w-full
       {{ index . "flash" }}
-    div id=left-menu hidden mt-32 relative
-      div bg-red-600 w-1/4 h-full fixed top-0 left-0
-        hi
     div overflow-x-auto pl-3 pr-3 min-h-screen font-montserrat text-base
       {{ index . "content" }}
     div 

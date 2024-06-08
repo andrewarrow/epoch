@@ -31,7 +31,7 @@ func main() {
 		router.BuildTag = buildTag
 		router.EmbeddedTemplates = embeddedTemplates
 		router.EmbeddedAssets = embeddedAssets
-		r := router.NewRouter("DATABASE_URL", embeddedFile)
+		r := router.NewRouter("epoch", embeddedFile)
 		r.Paths["/"] = app.HandleWelcome
 		r.Paths["api"] = app.HandleApi
 		//r.Paths["epoch"] = app.epoch

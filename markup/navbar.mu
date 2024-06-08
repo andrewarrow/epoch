@@ -1,8 +1,17 @@
 {{ define "navbar" }}
   div navbar bg-base-200
-    div navbar-start flex items-center space-x-3
-      button btn btn-ghost id=menu
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-9"> <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" /> </svg>
+    div drawer navbar-start flex items-center space-x-3
+      input id=my-drawer type=checkbox drawer-toggle
+      div drawer-content
+        label for=my-drawer drawer-button button btn btn-ghost 
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-9"> <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" /> </svg>
+      div drawer-side
+        label for=my-drawer drawer-overlay
+        ul menu p-4 w-80 min-h-full bg-base-200 text-base-content
+          li
+            wfwe
+          li
+            wfwef
       div btn btn-ghost
         a href=/
           h1 text-2xl font-bold

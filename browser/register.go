@@ -9,7 +9,7 @@ import (
 
 var Global *wasm.Global
 var Document *wasm.Document
-var menuOpen bool
+var isMenuOpen bool
 
 func RegisterEvents() {
 	MenuEvents()
@@ -24,12 +24,12 @@ func MenuEvents() {
 	Global.Event("menu", menuOpen)
 }
 func menuOpen() {
-	if menuOpen == false {
+	if isMenuOpen == false {
 		Document.Id("left-menu").Show()
-		menuOpen = true
+		isMenuOpen = true
 	} else {
 		Document.Id("left-menu").Hide()
-		menuOpen = false
+		isMenuOpen = false
 	}
 }
 
