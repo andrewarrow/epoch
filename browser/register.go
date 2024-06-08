@@ -11,6 +11,7 @@ var Global *wasm.Global
 var Document *wasm.Document
 
 func RegisterEvents() {
+	NavEvents()
 	if Global.Start == "welcome.html" {
 		LoginEvents()
 	} else if Global.Start == "create.html" {
@@ -25,7 +26,11 @@ func CreateEvents() {
 	a.After = func(id int64) {
 	}
 }
-func createOpen() {
+func NavEvents() {
+	Global.Event("plus", taskOpen)
+}
+func taskOpen() {
+	Document.Id("tasks").Show()
 }
 
 func LoginEvents() {
