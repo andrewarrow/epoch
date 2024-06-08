@@ -1,6 +1,7 @@
 package app
 
 import (
+	"github.com/andrewarrow/feedback/markup"
 	"github.com/andrewarrow/feedback/router"
 )
 
@@ -45,6 +46,7 @@ func handleProjectCreate(c *router.Context) {
 	c.ReadJsonBodyIntoParams()
 	send := map[string]any{}
 	c.Params["name"] = c.Params["name"]
+	c.Params["color"] = markup.RandomColor()
 	c.ValidateCreate("project")
 	c.Insert("project")
 	c.SendContentAsJson(send, 200)

@@ -40,6 +40,14 @@
           "flavor": "name"
         },
         {
+          "name": "color",
+          "flavor": "name"
+        },
+        {
+          "name": "hidden",
+          "flavor": "bool"
+        },
+        {
           "name": "completed_at",
           "flavor": "timestamp",
           "null": "yes"
