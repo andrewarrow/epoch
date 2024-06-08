@@ -20,6 +20,7 @@ func FetchProjects() {
 }
 
 func ProjectManage() {
+
 	after := func() {
 		Global.Location.Href = "/"
 	}
