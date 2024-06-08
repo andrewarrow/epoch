@@ -1,9 +1,33 @@
 package app
 
-import "github.com/andrewarrow/feedback/router"
+import (
+	"math/rand"
+
+	"github.com/andrewarrow/feedback/markup"
+	"github.com/andrewarrow/feedback/router"
+)
 
 func Seed(c *router.Context) {
-
+	for _, item := range projects {
+		c.Params = map[string]any{}
+		c.Params["name"] = item
+		c.Params["color"] = markup.RandomColor()
+		c.ValidateCreate("project")
+		c.Insert("project")
+		one := c.One("project", "where name=$1", item)
+		if len(one) == 0 {
+			continue
+		}
+		for i := 0; i < 9; i++ {
+			c.Params = map[string]any{}
+			c.Params["name"] = tasks[rand.Intn(len(tasks))-1]
+			if rand.Intn(100) > 20 {
+				c.Params["project_id"] = one["id"]
+			}
+			c.ValidateCreate("task")
+			c.Insert("task")
+		}
+	}
 }
 
 var projects = []string{

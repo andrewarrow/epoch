@@ -37,7 +37,8 @@
       "fields": [
         {
           "name": "name",
-          "flavor": "name"
+          "flavor": "name",
+          "index": "unique"
         },
         {
           "name": "color",
