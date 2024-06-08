@@ -22,6 +22,10 @@ func Project(c *router.Context, second, third string) {
 		handleProjectCreate(c)
 		return
 	}
+	if second != "" && third == "" && c.Method == "DELETE" {
+		handleProjectDelete(c, second)
+		return
+	}
 	c.NotFound = true
 }
 
@@ -36,6 +40,10 @@ func handleProjectManage(c *router.Context) {
 	c.SendContentInLayout("project_manage.html", send, 200)
 }
 
+func handleProjectDelete(c *router.Context, guid string) {
+	send := map[string]any{}
+	c.SendContentAsJson(send, 200)
+}
 func handleProjects(c *router.Context) {
 	send := map[string]any{}
 	items := c.All("project", "order by created_at desc", "")

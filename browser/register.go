@@ -14,6 +14,8 @@ func RegisterEvents() {
 		LoginEvents()
 	} else if Global.Start == "project_new.html" {
 		ProjectNew()
+	} else if Global.Start == "project_manage.html" {
+		ProjectManage()
 	} else if Global.Start == "register.html" {
 	}
 }

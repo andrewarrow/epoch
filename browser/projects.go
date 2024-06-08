@@ -18,3 +18,10 @@ func FetchProjects() {
 		px.Show()
 	}
 }
+
+func ProjectManage() {
+	after := func() {
+		Global.Location.Href = "/"
+	}
+	Global.AutoDel("/project/", w, "trash", after)
+}
