@@ -56,7 +56,7 @@ func LoginEvents() {
 
 func loadTasks() {
 	items := wasm.DoGetItems("/task")
-	tasks := Document.Id("tasks")
+	tasks := Document.Id("task-list")
 	for _, item := range items {
 		a := Document.RenderToNewDiv("task", item)
 		tasks.Call("appendChild", a)
