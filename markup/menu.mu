@@ -17,7 +17,13 @@
 
         div text-2xl
           Scheduled
-    {{ template "projects" . }}
+    li
+      div flex space-x-6 items-center
+        div text-2xl text-yellow-600
+          Projects
+        div
+    li id=foo
+      {{ template "projects" . }}
     li
       div flex space-x-6 items-center
         div text-2xl text-yellow-600

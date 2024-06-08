@@ -4,14 +4,26 @@ mkdir -p views
 cp main.go save_main
 cp wasm/main.go .
 GOOS=js GOARCH=wasm go build -ldflags="-s -w -X main.useLive=true" -o assets/other/json.wasm 
-cd assets/other
-rm json.wasm.gz
-gzip json.wasm
-cd ../..
-mv save_main main.go
-tailwindcss -i assets/css/tail.components.css -o assets/css/tail.min.css --minify
-uuid=$(uuidgen); go build -ldflags="-X main.buildTag=$uuid" -o epoch
+if [ $? -eq 0 ]; then
+  cd assets/other
+  rm json.wasm.gz
+  gzip json.wasm
+  cd ../..
+  mv save_main main.go
+  tailwindcss -i assets/css/tail.components.css -o assets/css/tail.min.css --minify
+  export uuid=$(uuidgen)
+  go build -ldflags="-X main.buildTag=$uuid" -o epoch
+  if [ $? -eq 0 ]; then
+    echo 3
+    ./epoch
+else
+  mv save_main main.go
+  echo "false"
+fi
+  echo 3
+  ./epoch
+else
+  echo "false"
+fi
 #cp epoch epoch.app/Contents/MacOS/MyApp
 #open .
-echo 3
-./epoch
