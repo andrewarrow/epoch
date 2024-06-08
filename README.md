@@ -1,6 +1,13 @@
 # epoch
 
-time tracker and todo list
+time tracker and todo list a clone of johannesjo's [super-productivity](https://github.com/johannesjo/super-productivity) in golang 
+
+![super-productivity](https://i.imgur.com/szpWtFz.png)
+
+![epoch1](https://i.imgur.com/FpKfqf8.png)
+![epoch2](https://i.imgur.com/hHADj3L.png)
+![epoch3](https://i.imgur.com/iOvs5PS.png)
+![epoch4](https://i.imgur.com/dQ8CZ0D.png)
 
 
 # keydown 
