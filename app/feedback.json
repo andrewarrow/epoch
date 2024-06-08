@@ -33,6 +33,20 @@
       ]
     },
     {
+      "name": "task",
+      "fields": [
+        {
+          "name": "name",
+          "flavor": "name"
+        },
+        {
+          "name": "completed_at",
+          "flavor": "timestamp",
+          "null": "yes"
+        }
+      ]
+    },
+    {
       "name": "cookie_token",
       "fields": [
         {

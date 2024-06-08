@@ -36,6 +36,7 @@ func main() {
 		r.Paths["api"] = app.HandleApi
 		//r.Paths["epoch"] = app.Epoch
 		r.Paths["project"] = app.Project
+		r.Paths["task"] = app.Task
 		//r.Paths["login"] = app.Login
 		//r.Paths["register"] = app.Register
 		//r.Paths["admin"] = app.Admin

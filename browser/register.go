@@ -41,6 +41,7 @@ func taskOpen() {
 		Document.Id("new-task").Focus()
 		isTaskOpen = true
 		a := wasm.NewAutoForm("tasks")
+		a.Path = "/task"
 		a.After = func(id int64) {
 			Document.Id("new-task").Set("value", "")
 		}
