@@ -44,6 +44,7 @@ func taskOpen() {
 		a.Path = "/task"
 		a.After = func(id int64) {
 			Document.Id("new-task").Set("value", "")
+			go loadTasks()
 		}
 		Global.AddAutoForm(a)
 	}
@@ -57,8 +58,10 @@ func LoginEvents() {
 func loadTasks() {
 	items := wasm.DoGetItems("/task")
 	tasks := Document.Id("task-list")
+	tasks.Set("innerHTML", "")
 	for _, item := range items {
 		a := Document.RenderToNewDiv("task", item)
+		fmt.Println(a)
 		tasks.Call("appendChild", a)
 	}
 	if len(items) == 0 {

@@ -24,9 +24,9 @@ func handleTasks(c *router.Context) {
 }
 
 func handleTaskCreate(c *router.Context) {
+	c.ReadJsonBodyIntoParams()
 	send := map[string]any{}
-	c.Params = map[string]any{}
-	c.Params["name"] = "test"
+	c.Params["name"] = c.Params["new-task"]
 	c.ValidateCreate("task")
 	c.Insert("task")
 	c.SendContentAsJson(send, 200)
