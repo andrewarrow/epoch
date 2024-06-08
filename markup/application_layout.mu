@@ -12,6 +12,7 @@ html data-theme=sunset
       script src=https://cdn.tailwindcss.com
     {{ end }}
     script src=/assets/javascript/wasm_exec.js?id!{{$build}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.2/jscolor.min.js" integrity="sha512-qFhMEJrjI50TwLDGZ7Oi0ksTSWnFOqTNXhlqqUgWnE65S23rWUtQOv+tMNEybkMYSXKgAc3eg/SzkX+qrtJT/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     script
       function $(id) { return document.getElementById(id); }
     title
