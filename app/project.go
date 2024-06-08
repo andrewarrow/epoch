@@ -13,6 +13,10 @@ func Project(c *router.Context, second, third string) {
 		handleProjectNew(c)
 		return
 	}
+	if second == "manage" && third == "" && c.Method == "GET" {
+		handleProjectManage(c)
+		return
+	}
 	if second == "" && third == "" && c.Method == "POST" {
 		handleProjectCreate(c)
 		return
@@ -23,6 +27,10 @@ func Project(c *router.Context, second, third string) {
 func handleProjectNew(c *router.Context) {
 	send := map[string]any{}
 	c.SendContentInLayout("project_new.html", send, 200)
+}
+func handleProjectManage(c *router.Context) {
+	send := map[string]any{}
+	c.SendContentInLayout("project_manage.html", send, 200)
 }
 
 func handleProjects(c *router.Context) {

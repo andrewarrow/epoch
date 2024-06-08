@@ -19,7 +19,7 @@ html data-theme=sunset
       {{ index . "title" }}
     {{ index . "viewport" }}
   body
-    div hidden2 absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/3 h-24 bg-gray-100 rounded-lg flex justify-center items-center text-black
+    div id=toast hidden absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/3 h-24 bg-gray-100 rounded-lg flex justify-center items-center text-black
       div ml-6 mr-6 text-green-600 text-4xl
         +
       div mr-9
