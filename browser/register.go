@@ -50,8 +50,20 @@ func taskOpen() {
 }
 
 func LoginEvents() {
-	fmt.Println("h1")
 	Document.Document.Call("addEventListener", "keydown", wasm.FuncOf(keyPress))
+	go loadTasks()
+}
+
+func loadTasks() {
+	items := wasm.DoGetItems("/task")
+	tasks := Document.Id("tasks")
+	for _, item := range items {
+		a := Document.RenderToNewDiv("task", item)
+		tasks.Call("appendChild", a)
+	}
+	if len(items) == 0 {
+		tasks.Set("innerHTML", "There are no tasks yet.")
+	}
 }
 
 func keyPress(p0 js.Value) {
