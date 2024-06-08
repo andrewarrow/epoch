@@ -14,6 +14,9 @@ func FetchProjects() {
 		that := w.SelectAllByClass("top")
 		w = that[0]
 		px := Document.Id(fmt.Sprintf("p%d", (i + 1)))
+		if px == nil {
+			break
+		}
 		px.Set("innerHTML", w.Get("innerHTML"))
 		px.Show()
 	}

@@ -20,7 +20,7 @@ func Seed(c *router.Context) {
 		}
 		for i := 0; i < 9; i++ {
 			c.Params = map[string]any{}
-			c.Params["name"] = tasks[rand.Intn(len(tasks))-1]
+			c.Params["name"] = tasks[rand.Intn(len(tasks)-1)]
 			if rand.Intn(100) > 20 {
 				c.Params["project_id"] = one["id"]
 			}
