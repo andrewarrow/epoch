@@ -18,3 +18,5 @@ div p-0
           input type=checkbox checkbox checkbox-primary id=box
           span ml-3 label-text
             Enable Project Backlog
+    div flex w-full justify-center space-x-6 
+      input btn btn-primary type=submit value=Save
