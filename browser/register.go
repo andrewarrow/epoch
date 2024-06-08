@@ -23,8 +23,8 @@ func RegisterEvents() {
 func ProjectNew() {
 	a := wasm.NewAutoForm("create")
 	a.Path = "/project"
-	a.After = func(id int64) {
-		Global.Toast("Project Created!")
+	a.After = func(val string) {
+		Global.Toast(val)
 		go FetchProjects()
 	}
 	Global.AddAutoForm(a)
@@ -45,7 +45,7 @@ func taskOpen() {
 		isTaskOpen = true
 		a := wasm.NewAutoForm("tasks")
 		a.Path = "/task"
-		a.After = func(id int64) {
+		a.After = func(val string) {
 			Document.Id("new-task").Set("value", "")
 			go loadTasks()
 			go FetchProjects()

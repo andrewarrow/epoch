@@ -42,6 +42,7 @@ func handleProjectManage(c *router.Context) {
 
 func handleProjectDelete(c *router.Context, guid string) {
 	send := map[string]any{}
+	c.FreeFormUpdate("delete from projects where guid=$1", guid)
 	c.SendContentAsJson(send, 200)
 }
 func handleProjects(c *router.Context) {
@@ -57,5 +58,6 @@ func handleProjectCreate(c *router.Context) {
 	c.Params["color"] = markup.RandomColor()
 	c.ValidateCreate("project")
 	c.Insert("project")
+	send["name"] = c.Params["name"]
 	c.SendContentAsJson(send, 200)
 }

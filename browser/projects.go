@@ -22,7 +22,7 @@ func FetchProjects() {
 func ProjectManage() {
 
 	after := func() {
-		Global.Location.Href = "/"
+		Global.Location.Set("href", "/")
 	}
 	w := Document.Id("manage")
 	Global.AutoDel("/project/", w, "trash", after)

@@ -25,8 +25,7 @@ html data-theme=sunset
       div mr-9
         span
           Created project 
-        span font-bold
-          werfwfw.
+        span font-bold id=toast-name
         span
           You can select it from the menu on the top left.
     div id=flash bg-red-600 text-white text-center fixed top-0 left-0 w-full
