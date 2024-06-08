@@ -3,6 +3,7 @@ package main
 import (
 	"embed"
 	"epoch/app"
+	"fmt"
 	"math/rand"
 	"os"
 	"time"
@@ -24,6 +25,7 @@ var buildTag string
 
 func main() {
 	rand.Seed(time.Now().UnixNano())
+	fmt.Printf("%+v\n", os.Args)
 	if len(os.Args) == 1 {
 		router.DB_FLAVOR = "sqlite"
 		router.BuildTag = buildTag
@@ -39,8 +41,8 @@ func main() {
 		r.Paths["markup"] = app.Markup
 		r.BucketPath = "/Users/aa/bucket"
 		r.NotLoggedInPath = "epoch/login"
-		go r.ListenAndServe(":3000")
-		webviewShow()
+		r.ListenAndServe(":3000")
+		//webviewShow()
 		return
 	}
 

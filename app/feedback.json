@@ -1,5 +1,5 @@
 {
-  "title": "marketplace",
+  "title": "epoch",
   "footer": "",
   "routes": [{"root": "sessions", "paths": [
                      {"verb": "GET", "second": "", "third": ""},
