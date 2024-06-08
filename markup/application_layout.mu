@@ -22,6 +22,9 @@ html data-theme=sunset
       {{ index . "flash" }}
     div overflow-x-auto pl-3 pr-3 min-h-screen font-montserrat text-base
       {{ index . "content" }}
+    div id=left-menu
+      div bg-red-600 w-1/4 h-full
+        hi
     div 
       div pb-32 footer items-center p-10 bg-base-200 text-base-content rounded
         div items-center grid-flow-col

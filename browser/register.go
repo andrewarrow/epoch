@@ -11,6 +11,7 @@ var Global *wasm.Global
 var Document *wasm.Document
 
 func RegisterEvents() {
+	MenuEvents()
 	if Global.Start == "welcome.html" {
 		LoginEvents()
 	} else if Global.Start == "login.html" {
@@ -18,10 +19,16 @@ func RegisterEvents() {
 	}
 }
 
+func MenuEvents() {
+	Global.Event("menu", menuOpen)
+}
+func menuOpen() {
+	Document.Id("left-menu").Show()
+}
+
 func LoginEvents() {
 	fmt.Println("h1")
 	Document.Document.Call("addEventListener", "keydown", wasm.FuncOf(keyPress))
-
 }
 
 func keyPress(p0 js.Value) {
