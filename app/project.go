@@ -23,7 +23,7 @@ func handleProjectCreate(c *router.Context) {
 
 func handleProjects(c *router.Context) {
 	send := map[string]any{}
-	items := c.All("task", "order by created_at desc", "")
+	items := c.All("project", "order by created_at desc", "")
 	send["items"] = items
 	c.SendContentAsJson(send, 200)
 }

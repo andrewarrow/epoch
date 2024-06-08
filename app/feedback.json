@@ -33,6 +33,20 @@
       ]
     },
     {
+      "name": "project",
+      "fields": [
+        {
+          "name": "name",
+          "flavor": "name"
+        },
+        {
+          "name": "completed_at",
+          "flavor": "timestamp",
+          "null": "yes"
+        }
+      ]
+    },
+    {
       "name": "task",
       "fields": [
         {
