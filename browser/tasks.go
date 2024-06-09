@@ -10,7 +10,7 @@ func loadTasks() {
 	tokens := strings.Split(Global.Location.Href, "/")
 	var items []map[string]any
 	if len(tokens) > 3 {
-		guid = tokens[len(tokens)-1]
+		guid := tokens[len(tokens)-1]
 		items = wasm.DoGetItems("/task/" + guid)
 	} else {
 		items = wasm.DoGetItems("/task")
