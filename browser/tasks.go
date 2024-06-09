@@ -18,6 +18,7 @@ func loadTasks(from string) {
 		items = wasm.DoGetItems("/task")
 	}
 	tasks := Document.Id("task-list")
+	completedTasks := Document.Id("completed-task-list")
 	if tasks == nil {
 		return
 	}
@@ -28,6 +29,7 @@ func loadTasks(from string) {
 	}
 	if len(items) == 0 {
 		tasks.Set("innerHTML", "No tasks match.")
+		completedTasks.Set("innerHTML", "No completed tasks.")
 		return
 	}
 	afterCheck := func(val string) {
