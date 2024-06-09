@@ -8,11 +8,19 @@ import (
 
 func Task(c *router.Context, second, third string) {
 	if second == "" && third == "" && c.Method == "GET" {
-		handleTasks(c)
+		handleTasks(c, false)
 		return
 	}
 	if second != "" && third == "" && c.Method == "GET" {
-		handleProjectTasks(c, second)
+		handleProjectTasks(c, second, false)
+		return
+	}
+	if second == "completed" && third == "" && c.Method == "GET" {
+		handleTasks(c, true)
+		return
+	}
+	if second != "" && third == "completed" && c.Method == "GET" {
+		handleProjectTasks(c, second, true)
 		return
 	}
 	if second == "" && third == "" && c.Method == "POST" {
@@ -26,17 +34,25 @@ func Task(c *router.Context, second, third string) {
 	c.NotFound = true
 }
 
-func handleTasks(c *router.Context) {
+func handleTasks(c *router.Context, completed bool) {
 	send := map[string]any{}
-	items := c.All("task", "where scheduled_at is not null order by created_at desc", "")
+	sql := "where scheduled_at is not null"
+	if completed {
+		sql = "where scheduled_at is not null and completed_at is not null"
+	}
+	items := c.All("task", sql+" order by created_at desc", "")
 	c.DecorateList(items)
 	send["items"] = items
 	c.SendContentAsJson(send, 200)
 }
-func handleProjectTasks(c *router.Context, guid string) {
+func handleProjectTasks(c *router.Context, guid string, completed bool) {
 	send := map[string]any{}
 	p := c.One("project", "where guid=$1", guid)
-	items := c.All("task", "where project_id=$1 order by created_at desc", "", p["id"])
+	sql := "where project_id=$1"
+	if completed {
+		sql = "where project_id=$1 and completed_at is not null"
+	}
+	items := c.All("task", sql+" order by created_at desc", "", p["id"])
 	c.DecorateList(items)
 	send["items"] = items
 	c.SendContentAsJson(send, 200)
