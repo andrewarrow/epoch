@@ -22,9 +22,9 @@ else
   echo "false"
 fi
   echo 3
-  ./epoch
+  #./epoch
 else
   echo "false"
 fi
-#cp epoch epoch.app/Contents/MacOS/MyApp
+cp epoch epoch.app/Contents/MacOS/
 #open .
