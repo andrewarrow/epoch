@@ -1,7 +1,6 @@
 div p-3
   {{ $name := index . "name" }}
   {{ $project := index . "project" }}
-  {{ $pname := index $project "name" }}
   div flex justify-center w-full 
     div w-1/2 bg-gray-700 py-3 rounded-lg hover:border-2 hover:cursor-pointer
       div flex 
@@ -11,4 +10,7 @@ div p-3
           div
             {{ $name }}
           div
-            {{ $pname }}
+            {{ if $project }}
+              {{ $pname := index $project "name" }}
+              {{ $pname }}
+            {{ end }}
