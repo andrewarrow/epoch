@@ -1,13 +1,8 @@
 div p-3
   {{ $name := index . "name" }}
   {{ $guid := index . "guid" }}
-  {{ $completed := index . "completed_at" }}
   {{ $project := index . "project" }}
-  {{ $prefix := "t" }}
-  {{ if $completed }}
-    {{ $prefix = "z" }}
-  {{ end }}
-  div flex justify-center w-full id={{$prefix}}-{{$guid}} 
+  div flex justify-center w-full id=t-{{$guid}} 
     div w-1/2 bg-gray-700 py-3 rounded-lg hover:border-2 hover:cursor-pointer
       div flex justify-between items-center
         div
@@ -15,7 +10,7 @@ div p-3
             div
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" /> </svg>
             div
-              {{ $name }}
+              {{ $name }} {{$guid}}
           div text-left ml-6 mt-1
             {{ if $project }}
               {{ $pname := index $project "name" }}

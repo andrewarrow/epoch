@@ -29,7 +29,7 @@ func loadTasks(from string) {
 		return
 	}
 	afterCheck := func(val string) {
-		Document.Id(val).Hide()
+		Document.Id("t" + val).Hide()
 	}
 	Global.AutoClick("task", "complete", tasks, "check", afterCheck)
 }
