@@ -20,6 +20,7 @@ func handleTasks(c *router.Context) {
 	send := map[string]any{}
 	items := c.All("task", "order by created_at desc", "")
 	send["items"] = items
+	c.DecorateList(send)
 	c.SendContentAsJson(send, 200)
 }
 
