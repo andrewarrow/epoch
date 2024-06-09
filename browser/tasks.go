@@ -15,5 +15,9 @@ func loadTasks() {
 	}
 	if len(items) == 0 {
 		tasks.Set("innerHTML", "There are no tasks yet.")
+		return
 	}
+	afterCheck := func(val string) {
+	}
+	Global.AutoClick("task", "complete", tasks, "check", afterCheck)
 }

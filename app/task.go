@@ -13,6 +13,10 @@ func Task(c *router.Context, second, third string) {
 		handleTaskCreate(c)
 		return
 	}
+	if second != "" && third == "complete" && c.Method == "POST" {
+		handleTaskComplete(c, second)
+		return
+	}
 	c.NotFound = true
 }
 
@@ -30,5 +34,11 @@ func handleTaskCreate(c *router.Context) {
 	c.Params["name"] = c.Params["new-task"]
 	c.ValidateCreate("task")
 	c.Insert("task")
+	c.SendContentAsJson(send, 200)
+}
+
+func handleTaskComplete(c *router.Context, guid string) {
+	c.ReadJsonBodyIntoParams()
+	send := map[string]any{}
 	c.SendContentAsJson(send, 200)
 }
