@@ -33,4 +33,5 @@ func ProjectManage() {
 
 func ProjectShow() {
 	go loadTasks("show")
+	go loadCompletedTasks("show")
 }

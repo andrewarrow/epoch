@@ -60,7 +60,7 @@ func getProjectWithDefault(c *router.Context, guid string) map[string]any {
 func handleProjectTasks(c *router.Context, guid string, completed bool) {
 	send := map[string]any{}
 	p := getProjectWithDefault(c, guid)
-	sql := "where project_id=$1"
+	sql := "where project_id=$1 and completed_at is null"
 	if completed {
 		sql = "where project_id=$1 and completed_at is not null"
 	}
