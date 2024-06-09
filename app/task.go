@@ -91,6 +91,15 @@ func handleTaskCreateProject(c *router.Context, guid string) {
 
 func handleTaskComplete(c *router.Context, guid string) {
 	send := map[string]any{}
-	c.FreeFormUpdate("update tasks set completed_at=$1 where guid=$2", time.Now(), guid)
+	one := c.One("task", "where guid=$1", guid)
+	if len(one) == 0 {
+		return
+	}
+
+	if one["completed_at"] == nil {
+		c.FreeFormUpdate("update tasks set completed_at=$1 where guid=$2", time.Now(), guid)
+	} else {
+		c.FreeFormUpdate("update tasks set completed_at=null where guid=$1", guid)
+	}
 	c.SendContentAsJson(send, 200)
 }
