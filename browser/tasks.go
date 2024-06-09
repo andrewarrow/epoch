@@ -52,7 +52,7 @@ func loadCompletedTasks(from string) {
 		tasks.Call("appendChild", a)
 	}
 	if len(items) == 0 {
-		completedTasks.Set("innerHTML", "No completed tasks.")
+		tasks.Set("innerHTML", "No completed tasks.")
 		return
 	}
 }
