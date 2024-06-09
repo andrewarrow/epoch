@@ -6,4 +6,6 @@ json.wasm.gz
 .DS_Store
 views
 tail.min.css
-epoch.app
+epoch.app/Content/MacOS
+AppIcon.icns
+mac_app.cer
