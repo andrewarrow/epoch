@@ -29,12 +29,13 @@ func loadTasks(from string) {
 		return
 	}
 	afterCheck := func(val string) {
+		Document.Id(val).Hide()
 	}
 	Global.AutoClick("task", "complete", tasks, "check", afterCheck)
 }
 
 func loadCompletedTasks(from string) {
-  guid := guidFromEnd()
+	guid := guidFromEnd()
 	var items []map[string]any
 	if guid != "" {
 		items = wasm.DoGetItems("/task/" + guid + "/completed")

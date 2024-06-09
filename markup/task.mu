@@ -1,8 +1,13 @@
 div p-3
   {{ $name := index . "name" }}
   {{ $guid := index . "guid" }}
+  {{ $completed := index . "completed_at" }}
   {{ $project := index . "project" }}
-  div flex justify-center w-full 
+  {{ $prefix := "t" }}
+  {{ if $completed }}
+    {{ $prefix = "z" }}
+  {{ end }}
+  div flex justify-center w-full id={{$prefix}}-{{$guid}} 
     div w-1/2 bg-gray-700 py-3 rounded-lg hover:border-2 hover:cursor-pointer
       div flex justify-between items-center
         div
