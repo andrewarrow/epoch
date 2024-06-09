@@ -1,6 +1,8 @@
 package browser
 
 import (
+	"strings"
+
 	"github.com/andrewarrow/feedback/wasm"
 )
 
@@ -37,6 +39,15 @@ func NavEvents() {
 	go FetchProjects()
 }
 
+func guidFromEnd() string {
+	tokens := strings.Split(Global.Location.Href, "/")
+	if len(tokens) > 3 {
+		guid := tokens[len(tokens)-1]
+		return guid
+	}
+	return ""
+}
+
 func taskOpen() {
 	if isTaskOpen {
 		Document.Id("tasks").Hide()
@@ -47,6 +58,10 @@ func taskOpen() {
 		isTaskOpen = true
 		a := wasm.NewAutoForm("tasks")
 		a.Path = "/task"
+		guid := guidFromEnd()
+		if guid != "" {
+			a.Path = "/task/" + guid
+		}
 		a.After = func(val string) {
 			Document.Id("new-task").Set("value", "")
 			go loadTasks("add+")

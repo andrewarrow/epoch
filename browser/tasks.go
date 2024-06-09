@@ -34,10 +34,9 @@ func loadTasks(from string) {
 }
 
 func loadCompletedTasks(from string) {
-	tokens := strings.Split(Global.Location.Href, "/")
+  guid := guidFromEnd()
 	var items []map[string]any
-	if len(tokens) > 3 {
-		guid := tokens[len(tokens)-1]
+	if guid != "" {
 		items = wasm.DoGetItems("/task/" + guid + "/completed")
 	} else {
 		items = wasm.DoGetItems("/task/completed")
