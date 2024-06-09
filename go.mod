@@ -8,7 +8,6 @@ require (
 	github.com/andrewarrow/feedback v0.0.0-20240604184010-ae64c5cf99fb
 	github.com/hajimehoshi/oto v1.0.1
 	github.com/tosone/minimp3 v1.0.2
-	github.com/webview/webview_go v0.0.0-20240220051247-56f456ca3a43
 )
 
 require (
