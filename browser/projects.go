@@ -32,5 +32,5 @@ func ProjectManage() {
 }
 
 func ProjectShow() {
-	go loadTasks()
+	go loadTasks("show")
 }

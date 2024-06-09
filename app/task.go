@@ -8,7 +8,7 @@ import (
 
 func Task(c *router.Context, second, third string) {
 	if second == "" && third == "" && c.Method == "GET" {
-		handleTasks(c, second)
+		handleTasks(c)
 		return
 	}
 	if second != "" && third == "" && c.Method == "GET" {
@@ -28,7 +28,7 @@ func Task(c *router.Context, second, third string) {
 
 func handleTasks(c *router.Context) {
 	send := map[string]any{}
-	items = c.All("task", "where scheduled_at is not null order by created_at desc", "")
+	items := c.All("task", "where scheduled_at is not null order by created_at desc", "")
 	c.DecorateList(items)
 	send["items"] = items
 	c.SendContentAsJson(send, 200)

@@ -1,13 +1,15 @@
 package browser
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/andrewarrow/feedback/wasm"
 )
 
-func loadTasks() {
+func loadTasks(from string) {
 	tokens := strings.Split(Global.Location.Href, "/")
+	fmt.Println(from, tokens)
 	var items []map[string]any
 	if len(tokens) > 3 {
 		guid := tokens[len(tokens)-1]
@@ -25,7 +27,7 @@ func loadTasks() {
 		tasks.Call("appendChild", a)
 	}
 	if len(items) == 0 {
-		tasks.Set("innerHTML", "There are no tasks yet.")
+		tasks.Set("innerHTML", "No tasks match.")
 		return
 	}
 	afterCheck := func(val string) {

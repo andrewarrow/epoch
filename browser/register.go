@@ -12,7 +12,7 @@ func RegisterEvents() {
 	NavEvents()
 	if Global.Start == "welcome.html" {
 		LoginEvents()
-	} else if Global.Start == "project_show.mu" {
+	} else if Global.Start == "project_show.html" {
 		ProjectShow()
 	} else if Global.Start == "project_new.html" {
 		ProjectNew()
@@ -49,7 +49,7 @@ func taskOpen() {
 		a.Path = "/task"
 		a.After = func(val string) {
 			Document.Id("new-task").Set("value", "")
-			go loadTasks()
+			go loadTasks("add+")
 			go FetchProjects()
 		}
 		Global.AddAutoForm(a)
@@ -57,5 +57,5 @@ func taskOpen() {
 }
 
 func LoginEvents() {
-	go loadTasks()
+	go loadTasks("welcome")
 }
