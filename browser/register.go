@@ -12,6 +12,8 @@ func RegisterEvents() {
 	NavEvents()
 	if Global.Start == "welcome.html" {
 		LoginEvents()
+	} else if Global.Start == "project_show.mu" {
+		ProjectShow()
 	} else if Global.Start == "project_new.html" {
 		ProjectNew()
 	} else if Global.Start == "project_manage.html" {

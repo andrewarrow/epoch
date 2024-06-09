@@ -1,9 +1,20 @@
 package browser
 
-import "github.com/andrewarrow/feedback/wasm"
+import (
+	"strings"
+
+	"github.com/andrewarrow/feedback/wasm"
+)
 
 func loadTasks() {
-	items := wasm.DoGetItems("/task")
+	tokens := strings.Split(Global.Location.Href, "/")
+	var items []map[string]any
+	if len(tokens) > 3 {
+		guid = tokens[len(tokens)-1]
+		items = wasm.DoGetItems("/task/" + guid)
+	} else {
+		items = wasm.DoGetItems("/task")
+	}
 	tasks := Document.Id("task-list")
 	if tasks == nil {
 		return

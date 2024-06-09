@@ -68,6 +68,11 @@
           "index": "yes"
         },
         {
+          "name": "scheduled_at",
+          "flavor": "timestamp",
+          "null": "yes"
+        },
+        {
           "name": "completed_at",
           "flavor": "timestamp",
           "null": "yes"

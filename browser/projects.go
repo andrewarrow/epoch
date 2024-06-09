@@ -30,3 +30,7 @@ func ProjectManage() {
 	w := Document.Id("manage")
 	Global.AutoDel("/project/", w, "trash", after)
 }
+
+func ProjectShow() {
+	go loadTasks()
+}
