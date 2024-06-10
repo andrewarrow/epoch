@@ -25,7 +25,10 @@ if [ $? -eq 0 ]; then
     echo 3
     if [ "$ENV_VAR" = "1" ]; then
       echo 4
+      mkdir -p epoch.app/Contents/MacOS
+      mkdir -p epoch.app/Contents/Resources
       cp epoch epoch.app/Contents/MacOS/
+      cp ~/Documents/epoch epoch.app/Contents/Resources
     else
       echo 6
       ./epoch run
