@@ -43,8 +43,12 @@ func main() {
 		r.Paths["markup"] = app.Markup
 		r.BucketPath = "/Users/aa/bucket"
 		r.NotLoggedInPath = "epoch/login"
-		go r.ListenAndServe(":3000")
-		webviewShow()
+		if os.Getenv("EPOCH_GUI") == "1" {
+			go r.ListenAndServe(":3000")
+			webviewShow()
+		} else {
+			r.ListenAndServe(":3000")
+		}
 		return
 	}
 

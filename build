@@ -1,2 +1,6 @@
 
+EPOCH_GUI=1
+
 # codesign --deep --force --verify --verbose --sign "Apple Distribution: Andrew Arrow (755R3VBZ84)" epoch.app
+
+# pkgbuild --root epoch.app --identifier dev.andrewarrow.epoch --version 1.0 --sign "Apple Distribution: Andrew Arrow (755R3VBZ84)" epoch.pkg

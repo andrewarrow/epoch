@@ -1,3 +1,5 @@
+#!/bin/bash
+
 go mod tidy
 mkdir -p views
 ./epoch render
@@ -15,16 +17,19 @@ if [ $? -eq 0 ]; then
   go build -ldflags="-X main.buildTag=$uuid" -o epoch
   if [ $? -eq 0 ]; then
     echo 3
-    ./epoch
+    ENV_VAR="$EPOCH_GUI"
+    if [ "$ENV_VAR" = "1" ]; then
+      echo 4
+      cp epoch epoch.app/Contents/MacOS/
+    else
+      echo 6
+      ./epoch
+    fi
+  else
+    mv save_main main.go
+    git checkout main.go
+    echo "false"
+  fi
 else
-  mv save_main main.go
-  git checkout main.go
   echo "false"
 fi
-  echo 3
-  #./epoch
-else
-  echo "false"
-fi
-cp epoch epoch.app/Contents/MacOS/
-#open .
