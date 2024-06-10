@@ -27,28 +27,9 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	fmt.Printf("%+v\n", os.Args)
 	if len(os.Args) == 1 {
-		router.DB_FLAVOR = "sqlite"
-		router.BuildTag = buildTag
-		router.EmbeddedTemplates = embeddedTemplates
-		router.EmbeddedAssets = embeddedAssets
-		r := router.NewRouter("epoch", embeddedFile)
-		r.Paths["/"] = app.HandleWelcome
-		r.Paths["api"] = app.HandleApi
-		//r.Paths["epoch"] = app.Epoch
-		r.Paths["project"] = app.Project
-		r.Paths["task"] = app.Task
-		//r.Paths["login"] = app.Login
-		//r.Paths["register"] = app.Register
-		//r.Paths["admin"] = app.Admin
-		r.Paths["markup"] = app.Markup
-		r.BucketPath = "/Users/aa/bucket"
-		r.NotLoggedInPath = "epoch/login"
-		if os.Getenv("EPOCH_GUI") == "1" {
-			go r.ListenAndServe(":3000")
-			webviewShow()
-		} else {
-			r.ListenAndServe(":3000")
-		}
+		r := getRouter()
+		go r.ListenAndServe(":3000")
+		webviewShow()
 		return
 	}
 
@@ -61,8 +42,30 @@ func main() {
 		app.Seed(r.ToContext())
 	} else if arg == "render" {
 		router.RenderMarkup()
-	} else if arg == "help" {
+	} else if arg == "run" {
+		r := getRouter()
+		r.ListenAndServe(":3000")
 	}
+}
+
+func getRouter() *router.Router {
+	router.DB_FLAVOR = "sqlite"
+	router.BuildTag = buildTag
+	router.EmbeddedTemplates = embeddedTemplates
+	router.EmbeddedAssets = embeddedAssets
+	r := router.NewRouter("epoch", embeddedFile)
+	r.Paths["/"] = app.HandleWelcome
+	r.Paths["api"] = app.HandleApi
+	//r.Paths["epoch"] = app.Epoch
+	r.Paths["project"] = app.Project
+	r.Paths["task"] = app.Task
+	//r.Paths["login"] = app.Login
+	//r.Paths["register"] = app.Register
+	//r.Paths["admin"] = app.Admin
+	r.Paths["markup"] = app.Markup
+	r.BucketPath = "/Users/aa/bucket"
+	r.NotLoggedInPath = "epoch/login"
+	return r
 }
 
 func webviewShow() {

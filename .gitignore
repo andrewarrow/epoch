@@ -10,3 +10,5 @@ epoch.app/Content/MacOS
 AppIcon.icns
 distribution.cer
 mac_app.cer
+epoch.app/Contents/_CodeSignature
+epoch.dmg

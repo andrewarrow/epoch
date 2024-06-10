@@ -9,6 +9,7 @@ import (
 func FetchProjects() {
 	items := wasm.DoGetItems("/project")
 	for i, item := range items {
+		fmt.Println("1111", item)
 		a := Document.RenderToNewDiv("project", item)
 		w := wasm.NewWrapper(a)
 		that := w.SelectAllByClass("top")
