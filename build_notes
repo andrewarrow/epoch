@@ -1,8 +1,11 @@
 
 EPOCH_GUI=1
 
+lipo -create -output myapp ~/x64 epoch.app/Contents/MacOS/epoch
+
 # codesign --deep --force --verify --verbose --sign "Apple Distribution: Andrew Arrow (755R3VBZ84)" epoch.app
 
 # hdiutil create -volname epoch -srcfolder epoch.app -ov -format UDZO epoch.dmg
 
 # pkgbuild --root epoch.app --identifier dev.andrewarrow.epoch --version 1.0 --sign "Apple Distribution: Andrew Arrow (755R3VBZ84)" epoch.pkg
+
