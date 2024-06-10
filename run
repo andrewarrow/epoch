@@ -28,7 +28,7 @@ if [ $? -eq 0 ]; then
       mkdir -p epoch.app/Contents/MacOS
       mkdir -p epoch.app/Contents/Resources
       cp epoch epoch.app/Contents/MacOS/
-      cp ~/Documents/epoch epoch.app/Contents/Resources
+      cp ~/Documents/epoch.icns epoch.app/Contents/Resources/AppIcon
     else
       echo 6
       ./epoch run
