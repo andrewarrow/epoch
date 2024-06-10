@@ -27,6 +27,7 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	fmt.Printf("%+v\n", os.Args)
 	if len(os.Args) == 1 {
+		router.UseLiveTemplates = false
 		r := getRouter()
 		go r.ListenAndServe(":3000")
 		webviewShow()
