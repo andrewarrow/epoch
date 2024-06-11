@@ -29,7 +29,7 @@ func main() {
 	if len(os.Args) == 1 {
 		router.UseLiveTemplates = false
 		r := getRouter()
-		go r.ListenAndServe(":3000")
+		go r.ListenAndServe(":3003")
 		webviewShow()
 		return
 	}
@@ -74,6 +74,6 @@ func webviewShow() {
 	defer w.Destroy()
 	w.SetTitle("epoch")
 	w.SetSize(969, 666, webview.HintNone)
-	w.Navigate("http://localhost:3000")
+	w.Navigate("http://localhost:3003")
 	w.Run()
 }
