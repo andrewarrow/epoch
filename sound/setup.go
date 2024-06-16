@@ -1,5 +1,6 @@
 package sound
 
+/*
 import (
 	"os"
 
@@ -19,4 +20,4 @@ func PlaySound(filename string) {
 	player := context.NewPlayer()
 	defer player.Close()
 	player.Write(data)
-}
+} */

@@ -1,8 +1,6 @@
 package app
 
 import (
-	"epoch/sound"
-
 	"github.com/andrewarrow/feedback/markup"
 	"github.com/andrewarrow/feedback/router"
 )
@@ -69,6 +67,6 @@ func handleProjectCreate(c *router.Context) {
 	c.ValidateCreate("project")
 	c.Insert("project")
 	send["val"] = c.Params["name"]
-	go sound.PlaySound("done5")
+	//go sound.PlaySound("done5")
 	c.SendContentAsJson(send, 200)
 }
