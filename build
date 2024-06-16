@@ -5,7 +5,7 @@ mkdir -p views
 ./epoch render
 cp main.go save_main
 cp wasm/main.go .
-GOOS=js GOARCH=wasm go build -ldflags="-s -w -X main.useLive=true" -o assets/other/json.wasm
+GOOS=js GOARCH=wasm go build -ldflags="-s -w -X main.useLive=false" -o assets/other/json.wasm
 
 if [ $? -eq 0 ]; then
   cd assets/other
@@ -15,10 +15,10 @@ if [ $? -eq 0 ]; then
   mv save_main main.go
   tailwindcss -i assets/css/tail.components.css -o assets/css/tail.min.css --minify
   export uuid=$(uuidgen)
-  go build -ldflags="-X main.buildTag=$uuid" -o epoch
+  GOOS=linux GOARCH=amd64 go build -ldflags="-X main.buildTag=$uuid" -o epoch
   if [ $? -eq 0 ]; then
     echo 3
-    ./epoch run
+    cp epoch ~/os/devops/web/web
   else
     mv save_main main.go
     git checkout main.go

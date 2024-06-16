@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/andrewarrow/feedback/router"
-	webview "github.com/webview/webview_go"
 )
 
 //go:embed app/feedback.json
@@ -30,7 +29,6 @@ func main() {
 		router.UseLiveTemplates = false
 		r := getRouter()
 		go r.ListenAndServe(":3003")
-		webviewShow()
 		return
 	}
 
@@ -69,6 +67,7 @@ func getRouter() *router.Router {
 	return r
 }
 
+/*
 func webviewShow() {
 	w := webview.New(true)
 	defer w.Destroy()
@@ -76,4 +75,4 @@ func webviewShow() {
 	w.SetSize(969, 666, webview.HintNone)
 	w.Navigate("http://localhost:3003")
 	w.Run()
-}
+}*/
