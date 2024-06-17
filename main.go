@@ -43,7 +43,7 @@ func main() {
 		router.RenderMarkup()
 	} else if arg == "run" {
 		r := getRouter()
-		r.ListenAndServe(":3000")
+		r.ListenAndServe(":3001")
 	}
 }
 
