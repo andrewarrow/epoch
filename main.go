@@ -36,7 +36,7 @@ func main() {
 
 	if arg == "import" {
 	} else if arg == "seed" {
-		router.DB_FLAVOR = "sqlite"
+		//router.DB_FLAVOR = "sqlite"
 		r := router.NewRouter("DATABASE_URL", embeddedFile)
 		app.Seed(r.ToContext())
 	} else if arg == "render" {
