@@ -38,6 +38,7 @@ func main() {
 	} else if arg == "seed" {
 		router.DB_FLAVOR = "sqlite"
 		r := router.NewRouter("epoch", embeddedFile)
+		r := router.NewRouter("DATABASE_URL", embeddedFile)
 		app.Seed(r.ToContext())
 	} else if arg == "render" {
 		router.RenderMarkup()
@@ -48,11 +49,10 @@ func main() {
 }
 
 func getRouter() *router.Router {
-	router.DB_FLAVOR = "sqlite"
 	router.BuildTag = buildTag
 	router.EmbeddedTemplates = embeddedTemplates
 	router.EmbeddedAssets = embeddedAssets
-	r := router.NewRouter("epoch", embeddedFile)
+	r := router.NewRouter("DATABASE_URL", embeddedFile)
 	r.Paths["/"] = app.HandleWelcome
 	r.Paths["api"] = app.HandleApi
 	//r.Paths["epoch"] = app.Epoch
