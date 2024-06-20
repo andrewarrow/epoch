@@ -35,12 +35,16 @@ func main() {
 
 	arg := os.Args[1]
 
+	if runtime.GOOS == "darwin" {
+		router.DB_FLAVOR = "sqlite"
+	}
+
 	if arg == "import" {
 	} else if arg == "seed" {
 		//router.DB_FLAVOR = "sqlite"
 		r := router.NewRouter("DATABASE_URL", embeddedFile)
 		if runtime.GOOS == "darwin" {
-			r = router.NewRouter("toodo", embeddedFile)
+			r = router.NewRouter("epoch", embeddedFile)
 		}
 		app.Seed(r.ToContext())
 	} else if arg == "render" {
@@ -57,7 +61,7 @@ func getRouter() *router.Router {
 	router.EmbeddedAssets = embeddedAssets
 	r := router.NewRouter("DATABASE_URL", embeddedFile)
 	if runtime.GOOS == "darwin" {
-		r = router.NewRouter("toodo", embeddedFile)
+		r = router.NewRouter("epoch", embeddedFile)
 	}
 	r.Paths["/"] = app.HandleWelcome
 	r.Paths["api"] = app.HandleApi
