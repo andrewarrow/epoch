@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
+	"runtime"
 	"time"
 
 	"github.com/andrewarrow/feedback/router"
@@ -38,12 +39,15 @@ func main() {
 	} else if arg == "seed" {
 		//router.DB_FLAVOR = "sqlite"
 		r := router.NewRouter("DATABASE_URL", embeddedFile)
+		if runtime.GOOS == "darwin" {
+			r = router.NewRouter("toodo", embeddedFile)
+		}
 		app.Seed(r.ToContext())
 	} else if arg == "render" {
 		router.RenderMarkup()
 	} else if arg == "run" {
 		r := getRouter()
-		r.ListenAndServe(":3001")
+		r.ListenAndServe(":3000")
 	}
 }
 
@@ -52,6 +56,9 @@ func getRouter() *router.Router {
 	router.EmbeddedTemplates = embeddedTemplates
 	router.EmbeddedAssets = embeddedAssets
 	r := router.NewRouter("DATABASE_URL", embeddedFile)
+	if runtime.GOOS == "darwin" {
+		r = router.NewRouter("toodo", embeddedFile)
+	}
 	r.Paths["/"] = app.HandleWelcome
 	r.Paths["api"] = app.HandleApi
 	//r.Paths["epoch"] = app.Epoch

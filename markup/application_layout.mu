@@ -8,9 +8,7 @@ html data-theme=sunset
     link rel=icon href=/assets/images/book.png
     link rel=stylesheet type=text/css href=/assets/css/tail.min.css?id!{{$build}}
     link rel=stylesheet type=text/css href=/assets/css/main.css?id!{{$build}}
-    {{ if index . "USE_LIVE_TEMPLATES" }}
-      script src=https://cdn.tailwindcss.com
-    {{ end }}
+    script src=https://cdn.tailwindcss.com
     script src=/assets/javascript/wasm_exec.js?id!{{$build}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.5.2/jscolor.min.js" integrity="sha512-qFhMEJrjI50TwLDGZ7Oi0ksTSWnFOqTNXhlqqUgWnE65S23rWUtQOv+tMNEybkMYSXKgAc3eg/SzkX+qrtJT/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     script

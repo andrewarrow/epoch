@@ -2,6 +2,7 @@
 
 go mod tidy
 mkdir -p views
+echo "" > views/test.html
 ./epoch render
 cp main.go save_main
 cp wasm/main.go .
@@ -18,6 +19,7 @@ if [ $? -eq 0 ]; then
   go build -ldflags="-X main.buildTag=$uuid" -o epoch
   if [ $? -eq 0 ]; then
     echo 3
+    DATABASE_URL=postgres://fred3:fred3@localhost/book?sslmode=disable
     ./epoch run
   else
     mv save_main main.go
